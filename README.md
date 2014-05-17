@@ -1,6 +1,10 @@
 ![CRYPTAUR](https://raw.githubusercontent.com/cryptosphere/cryptor/master/cryptosaur.png)
 Cryptor
 =======
+[![Gem Version](https://badge.fury.io/rb/cryptor.png)](http://badge.fury.io/rb/cryptor)
+[![Build Status](https://travis-ci.org/cryptosphere/cryptor.png?branch=master)](https://travis-ci.org/cryptosphere/cryptor)
+[![Code Climate](https://codeclimate.com/github/cryptosphere/cryptor.png)](https://codeclimate.com/github/cryptosphere/cryptor)
+[![Coverage Status](https://coveralls.io/repos/cryptosphere/cryptor/badge.png?branch=master)](https://coveralls.io/r/cryptosphere/cryptor)
 
 A safe Ruby encryption library, designed to support features like multiple
 active encryption keys and key rotation.
