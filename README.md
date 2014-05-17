@@ -14,10 +14,10 @@ remains untamered with, even when it's in the hands of an attacker.
 
 Cryptor supports two backends:
 
+* [RbNaCl::SimpleBox] (default): authenticated symmetric encryption based on
+  XSalsa20+Poly1305 from libsodium.
 * [ActiveSupport::MessageEncryptor] (Rails 4+): a bespoke authenticated
   encryption scheme provided by Rails, based on AES-CBC and HMAC.
-* [RbNaCl::SimpleBox]: authenticated symmetric encryption based on
-  XSalsa20+Poly1305 from libsodium.
 
 [authenticated encryption]: https://en.wikipedia.org/wiki/Authenticated_encryption
 [ActiveSupport::MessageEncryptor]: http://api.rubyonrails.org/classes/ActiveSupport/MessageEncryptor.html
