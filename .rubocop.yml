@@ -1,2 +1,5 @@
 LineLength:
   Max: 99
+
+Encoding:
+   Enabled: false
