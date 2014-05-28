@@ -1,17 +1,23 @@
 require 'spec_helper'
 
 describe Cryptor::SecretKey do
-  let(:cipher_class) { double(:cipher_class) }
-  let(:cipher_inst)  { double(:cipher_inst) }
+  let(:algorithm)  { :BassOmatic }
+  let(:key_bytes)  { 42 }
+  let(:cipher)     { Cryptor::Cipher.new(algorithm, key_bytes: key_bytes) }
+  let(:secret_uri) { "secret.key:///#{algorithm};#{Cryptor::Encoding.encode("\xBA\x55")}" }
+
+  before do
+    Cryptor::Cipher.stub(:[]).and_return(cipher)
+  end
+
+  subject { described_class.new(secret_uri) }
 
   it 'generates random keys' do
-    Cryptor::Cipher.stub(:[]).and_return(cipher_class)
+    expect(described_class.random_key(algorithm)).to be_a described_class
+  end
 
-    cipher_class.should_receive(:key_bytes).and_return(42)
-    cipher_class.should_receive(:cipher_name).and_return(:vogon)
-    cipher_class.should_receive(:new).and_return(cipher_inst)
-
-    expect(described_class.random_key(cipher_class)).to be_a described_class
+  it 'serializes to a URI' do
+    expect(subject.to_secret_uri).to eq secret_uri
   end
 
   it 'raises ArgumentError if given a bogus URI' do

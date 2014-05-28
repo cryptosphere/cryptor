@@ -3,31 +3,35 @@ class Cryptor
   class Cipher
     REGISTRY = {}
 
-    class << self
-      attr_reader :cipher_name, :key_bytes
+    attr_reader :algorithm, :key_bytes
+
+    def self.register(algorithm, options = {})
+      REGISTRY[algorithm.to_s] ||= self.new(algorithm, options)
     end
 
-    def self.register(name, options = {})
-      REGISTRY[name.to_s] ||= self
-
-      @cipher_name = name
-      @key_bytes   = options[:key_bytes] || fail(ArgumentError, 'key_bytes not specified')
+    def self.[](algorithm)
+      REGISTRY[algorithm.to_s] || fail(ArgumentError, "no such cipher: #{algorithm}")
     end
 
-    def self.[](name)
-      REGISTRY[name.to_s] || fail(ArgumentError, "no such cipher: #{name}")
+    def initialize(algorithm, options = {})
+      @algorithm = algorithm
+      @key_bytes = options[:key_bytes] || fail(ArgumentError, 'key_bytes not specified')
     end
 
-    def self.random_key
+    def random_key
       SecretKey.random_key(self)
     end
 
     def encrypt(_key, _plaintext)
+      # :nocov:
       fail NotImplementedError, "'encrypt' method has not been implemented"
+      # :nocov:
     end
 
     def decrypt(_key, _ciphertext)
+      # :nocov:
       fail NotImplementedError, "'decrypt' method has not been implemented"
+      # :nocov:
     end
   end
 end
