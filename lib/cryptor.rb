@@ -32,18 +32,21 @@ class Cryptor
   def decrypt(ciphertext)
     message     = ORDO::Message.parse(ciphertext)
     fingerprint = message['Key-Fingerprint']
-    encoding    = message['Content-Transfer-Encoding']
 
-    fail ArgumentError, "invalid key fingerprint: #{fingerprint}" if @key.fingerprint != fingerprint
+    fail ArgumentError, "unknown key fingerprint: #{fingerprint}" if @key.fingerprint != fingerprint
+
+    @key.decrypt decode(message)
+  end
+
+  private
+
+  def decode(message)
+    encoding = message['Content-Transfer-Encoding']
 
     case encoding
-    when 'base64'
-      ciphertext = Base64.strict_decode64(message.body)
-    when 'binary'
-      ciphertext = message.body
+    when 'base64' then Base64.strict_decode64(message.body)
+    when 'binary' then message.body
     else fail ArgumentError, "invalid message encoding: #{encoding}"
     end
-
-    @key.decrypt(ciphertext)
   end
 end
