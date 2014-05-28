@@ -6,7 +6,7 @@ class Cryptor
     attr_reader :algorithm, :key_bytes
 
     def self.register(algorithm, options = {})
-      REGISTRY[algorithm.to_s] ||= self.new(algorithm, options)
+      REGISTRY[algorithm.to_s] ||= new(algorithm, options)
     end
 
     def self.[](algorithm)
