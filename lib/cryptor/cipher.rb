@@ -23,15 +23,15 @@ class Cryptor
     end
 
     def encrypt(_key, _plaintext)
-      # :nocov:
+      #:nocov:
       fail NotImplementedError, "'encrypt' method has not been implemented"
-      # :nocov:
+      #:nocov:
     end
 
     def decrypt(_key, _ciphertext)
-      # :nocov:
+      #:nocov:
       fail NotImplementedError, "'decrypt' method has not been implemented"
-      # :nocov:
+      #:nocov:
     end
   end
 end
