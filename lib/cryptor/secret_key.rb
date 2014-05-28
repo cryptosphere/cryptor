@@ -1,4 +1,5 @@
 require 'base64'
+require 'digest/sha2'
 
 class Cryptor
   # Secret key used to encrypt plaintexts
@@ -46,8 +47,8 @@ class Cryptor
     #
     # @return [String] fingerprint as a ni:// URL
     def fingerprint
-      base64 = Cryptor::Encoding.encode(to_secret_uri)
-      "ni:///sha-256;#{base64}"
+      digest = Digest::SHA256.digest(to_secret_uri)
+      "ni:///sha-256;#{Cryptor::Encoding.encode(digest)}"
     end
 
     # Encrypt a plaintext under this key
