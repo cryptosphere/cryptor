@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'ordo', github: 'cryptosphere/ordo'
+
 group :development do
   gem 'guard-rspec'
 end

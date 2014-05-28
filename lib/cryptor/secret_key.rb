@@ -4,6 +4,8 @@ require 'digest/sha2'
 class Cryptor
   # Secret key used to encrypt plaintexts
   class SecretKey
+    attr_reader :cipher
+
     # Generate a random secret key
     #
     # @param [Cryptor::Cipher, Symbol] Cryptor::Cipher or algorithm name as a symbol
