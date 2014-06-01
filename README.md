@@ -16,13 +16,17 @@ Cryptor supports two backends:
 
 * [RbNaCl::SimpleBox]: (default) authenticated symmetric encryption based on
   XSalsa20+Poly1305 from [libsodium].
-* [ActiveSupport::MessageEncryptor] (Rails 4+): a bespoke authenticated
+* [ActiveSupport::MessageEncryptor]: (Rails 4+) a bespoke authenticated
   encryption scheme provided by Rails, based on AES-CBC and HMAC.
+
+Cryptor uses the experimental [ORDO v0 message format][ordo] for serializing
+encrypted messages.
 
 [authenticated encryption]: https://en.wikipedia.org/wiki/Authenticated_encryption
 [RbNaCl::SimpleBox]: https://github.com/cryptosphere/rbnacl/wiki/SimpleBox
 [libsodium]: https://github.com/jedisct1/libsodium/
 [ActiveSupport::MessageEncryptor]: http://api.rubyonrails.org/classes/ActiveSupport/MessageEncryptor.html
+[ordo]: https://github.com/cryptosphere/ordo/wiki/Message-Format
 
 ## Installation
 

@@ -19,10 +19,10 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(/^(test|spec|features)\//)
   spec.require_paths = ['lib']
 
-  spec.add_runtime_dependency 'rbnacl-libsodium'
+  spec.add_runtime_dependency 'ordo', '>= 0.0.1'
 
-  spec.add_development_dependency 'bundler', '~> 1.6'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'rspec'
+  spec.add_development_dependency 'rbnacl-libsodium'
 end
