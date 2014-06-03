@@ -44,7 +44,80 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To begin with, you must select a backend:
+
+### RbNaCl (recommended)
+
+RbNaCl is a Ruby FFI binding to libsodium, a portable state-of-the-art
+cryptography library.
+
+To use Cryptor with RbNaCl, add the following to your Gemfile:
+
+```ruby
+gem 'rbnacl-libsodium'
+```
+
+And in your Ruby program, require the following:
+
+```ruby
+require 'cryptor'
+require 'cryptor/ciphers/xsalsa20poly1305'
+```
+
+### Rails (ActiveSupport::MessageEncryptor)
+
+Cryptor can use ActiveSupport 4.0+'s `MessageEncryptor` class to encrypt
+messages. This scheme uses AES-256 in CBC mode for encryption and HMAC-SHA1
+to provide ciphertext integrity.
+
+This option is only recommended if you have some compliance issues which
+mandate the use of NIST ciphers or if you have problems installing
+the rbnacl-libsodium gem or libsodium library for some reason.
+
+To use Cryptor with ActiveSupport::MessageEncryptor, require the following
+from a Rails 4.0+ app or other app with ActiveSupport 4.0+ bundled:
+
+```ruby
+require 'cryptor'
+require 'cryptor/ciphers/message_encryptor'
+```
+
+### Secret Keys
+
+To encrypt data with Cryptor, you must first make a secret key to encrypt it
+under. Use the following for RbNaCl:
+
+```ruby
+# Make a RbNaCl secret key
+secret_key = Cryptor.random_key(:xsalsa20poly1305)
+```
+
+or the following for ActiveSupport::MessageEncryptor:
+
+```ruby
+# Make an ActiveSupport secret key
+secret_key = Cryptor.random_key(:message_encryptor)
+```
+
+Inspecting a secret key looks like this:
+
+```
+#<Cryptor::SecretKey:0x81438830 cipher=xsalsa20poly1305 fingerprint=ni:///sha-256;Wy8hx4...>
+```
+
+You can't actually see the secret key itself by calling `#inspect` or `#to_s`.
+This is to prevent accidentally logging the secret key. Instead you can only
+see the key's fingerprint, which is given as a [RFC 6920] hash URI of the secret
+key's [ORDO secret URI].
+
+To obtain the secret URI, use the `#to_secret_uri` method, which returns a string:
+
+```
+"secret.key:///xsalsa20poly1305;0saB1tfgKWDh_bX0oAquLWgAq-6yjG1u04mP-CtQG-4"
+```
+
+[RFC 6920]: http://tools.ietf.org/html/rfc6920
+[ORDO secret URI]: https://github.com/cryptosphere/ordo/wiki/URI-Registry
 
 ## Contributing
 

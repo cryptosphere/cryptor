@@ -75,7 +75,9 @@ class Cryptor
     #
     # @return [String] a string representing this key
     def inspect
-      "#<#{self.class}:0x#{object_id.to_s(16)} fingerprint=#{fingerprint}>"
+      "#<#{self.class}:0x#{object_id.to_s(16)} " \
+      "cipher=#{cipher.algorithm} " \
+      "fingerprint=#{fingerprint}>"
     end
   end
 end

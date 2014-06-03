@@ -2,13 +2,12 @@ require 'cryptor/version'
 
 require 'cryptor/encoding'
 require 'cryptor/secret_key'
-require 'cryptor/ciphers/xsalsa20poly1305'
 
 require 'ordo'
 
 # An easy-to-use library for real-world Ruby cryptography
 class Cryptor
-  def self.random_key(cipher = :xsalsa20poly1305)
+  def self.random_key(cipher)
     Cipher[cipher].random_key
   end
 

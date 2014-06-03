@@ -1,3 +1,5 @@
+require 'cryptor'
+
 class Cryptor
   # Base class of all Cryptor ciphers
   class Cipher
