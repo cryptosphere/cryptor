@@ -8,7 +8,7 @@ describe Cryptor::SecretKey do
   let(:secret_uri) { "secret.key:///#{algorithm};#{Cryptor::Encoding.encode(secret_key)}" }
 
   before do
-    Cryptor::Cipher.stub(:[]).and_return(cipher)
+    allow(Cryptor::Cipher).to receive(:[]).and_return(cipher)
   end
 
   subject { described_class.new(secret_uri) }

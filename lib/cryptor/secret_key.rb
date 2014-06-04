@@ -1,7 +1,7 @@
 require 'base64'
 require 'digest/sha2'
 
-class Cryptor
+module Cryptor
   # Secret key used to encrypt plaintexts
   class SecretKey
     attr_reader :cipher

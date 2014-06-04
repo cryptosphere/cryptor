@@ -1,6 +1,6 @@
 require 'base64'
 
-class Cryptor
+module Cryptor
   # Encode and parse strings in "URL-safe" Base64 format
   module Encoding
     module_function

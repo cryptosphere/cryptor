@@ -1,6 +1,4 @@
-require 'cryptor'
-
-class Cryptor
+module Cryptor
   # Base class of all Cryptor ciphers
   class Cipher
     REGISTRY = {}

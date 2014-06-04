@@ -2,7 +2,7 @@ require 'rbnacl/libsodium'
 
 require 'cryptor/cipher'
 
-class Cryptor
+module Cryptor
   module Ciphers
     # XSalsa20+Poly1305 authenticated stream cipher
     class XSalsa20Poly1305 < Cipher

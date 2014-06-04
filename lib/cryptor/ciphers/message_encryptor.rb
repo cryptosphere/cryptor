@@ -3,7 +3,7 @@ require 'active_support/message_verifier'
 
 require 'cryptor/cipher'
 
-class Cryptor
+module Cryptor
   module Ciphers
     # MessageEncryptor is a bespoke authenticated encryption scheme invented
     # by rails-core. It uses AES-256-CBC and HMAC-SHA1 in an encrypt-then-MAC

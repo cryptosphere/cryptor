@@ -82,21 +82,21 @@ require 'cryptor'
 require 'cryptor/ciphers/message_encryptor'
 ```
 
-### Secret Keys
+### Authenticated Symmetric Encryption
 
 To encrypt data with Cryptor, you must first make a secret key to encrypt it
 under. Use the following for RbNaCl:
 
 ```ruby
 # Make a RbNaCl secret key
-secret_key = Cryptor.random_key(:xsalsa20poly1305)
+secret_key = Cryptor::SymmetricEncryption.random_key(:xsalsa20poly1305)
 ```
 
 or the following for ActiveSupport::MessageEncryptor:
 
 ```ruby
 # Make an ActiveSupport secret key
-secret_key = Cryptor.random_key(:message_encryptor)
+secret_key = Cryptor::SymmetricEncryption.random_key(:message_encryptor)
 ```
 
 Inspecting a secret key looks like this:
