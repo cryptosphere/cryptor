@@ -112,8 +112,27 @@ key's [ORDO secret URI].
 
 To obtain the secret URI, use the `#to_secret_uri` method, which returns a string:
 
-```
+```ruby
 "secret.key:///xsalsa20poly1305;0saB1tfgKWDh_bX0oAquLWgAq-6yjG1u04mP-CtQG-4"
+```
+
+This string can be saved somewhere secret and safe then later loaded and passed into
+`Cryptor::SymmetricEncryption.new`:
+
+```ruby
+cryptor = Cryptor::SymmetricEncryption.new("secret.key:///xsalsa20poly1305;0saB...")
+```
+
+After this, you can encrypt with the `#encrypt` method:
+
+```ruby
+ciphertext = cryptor.encrypt(plaintext)
+```
+
+and decrypt with the `#decrypt` method:
+
+```ruby
+decrypted = cryptor.decrypt(ciphertext)
 ```
 
 [RFC 6920]: http://tools.ietf.org/html/rfc6920
