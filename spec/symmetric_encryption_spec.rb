@@ -25,6 +25,16 @@ describe Cryptor::SymmetricEncryption do
     it 'raises InvalidMessageError if asked to decrypt garbage' do
       expect { subject.decrypt(garbage) }.to raise_exception(Cryptor::InvalidMessageError)
     end
+
+    it 'raises CorruptedMessageError if the message is corrupt' do
+      valid_message  = subject.encrypt(plaintext)
+      munged_message = ORDO::Message.parse(valid_message)
+      munged_message.body.replace Base64.strict_encode64(munged_message.body + "\0")
+
+      expect do
+        subject.decrypt(munged_message.to_string)
+      end.to raise_exception(Cryptor::CorruptedMessageError)
+    end
   end
 
   context 'message_encryptor' do
@@ -39,6 +49,16 @@ describe Cryptor::SymmetricEncryption do
 
     it 'raises InvalidMessageError if asked to decrypt garbage' do
       expect { subject.decrypt(garbage) }.to raise_exception(Cryptor::InvalidMessageError)
+    end
+
+    it 'raises CorruptedMessageError if the message is corrupt' do
+      valid_message  = subject.encrypt(plaintext)
+      munged_message = ORDO::Message.parse(valid_message)
+      munged_message.body.replace Base64.strict_encode64(munged_message.body + "\0")
+
+      expect do
+        subject.decrypt(munged_message.to_string)
+      end.to raise_exception(Cryptor::CorruptedMessageError)
     end
   end
 end

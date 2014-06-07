@@ -32,6 +32,8 @@ module Cryptor
 
       def decrypt(key, ciphertext)
         encryptor(key).decrypt_and_verify(ciphertext)
+      rescue ActiveSupport::MessageVerifier::InvalidSignature => ex
+        raise CorruptedMessageError, ex.to_s
       end
 
       private

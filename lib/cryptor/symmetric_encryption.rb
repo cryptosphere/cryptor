@@ -37,19 +37,7 @@ module Cryptor
       fingerprint = message['Key-Fingerprint']
       fail ArgumentError, "no key configured for: #{fingerprint}" if @key.fingerprint != fingerprint
 
-      @key.decrypt decode(message)
-    end
-
-    private
-
-    def decode(message)
-      encoding = message['Content-Transfer-Encoding']
-
-      case encoding
-      when 'base64' then Base64.strict_decode64(message.body)
-      when 'binary' then message.body
-      else fail ArgumentError, "invalid message encoding: #{encoding}"
-      end
+      @key.decrypt message.body
     end
   end
 end

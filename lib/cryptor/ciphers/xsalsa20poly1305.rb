@@ -14,6 +14,8 @@ module Cryptor
 
       def decrypt(key, ciphertext)
         box(key).decrypt(ciphertext)
+      rescue RbNaCl::CryptoError => ex
+        raise CorruptedMessageError, ex.to_s
       end
 
       private
