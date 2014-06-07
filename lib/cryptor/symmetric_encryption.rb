@@ -28,9 +28,13 @@ module Cryptor
     end
 
     def decrypt(ciphertext)
-      message     = ORDO::Message.parse(ciphertext)
-      fingerprint = message['Key-Fingerprint']
+      begin
+        message = ORDO::Message.parse(ciphertext)
+      rescue ORDO::ParseError => ex
+        fail InvalidMessageError, ex.to_s
+      end
 
+      fingerprint = message['Key-Fingerprint']
       fail ArgumentError, "no key configured for: #{fingerprint}" if @key.fingerprint != fingerprint
 
       @key.decrypt decode(message)
