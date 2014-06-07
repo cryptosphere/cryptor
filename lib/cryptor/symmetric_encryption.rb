@@ -31,7 +31,7 @@ module Cryptor
       begin
         message = ORDO::Message.parse(ciphertext)
       rescue ORDO::ParseError => ex
-        fail InvalidMessageError, ex.to_s
+        raise InvalidMessageError, ex.to_s
       end
 
       fingerprint = message['Key-Fingerprint']
