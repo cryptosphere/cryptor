@@ -61,7 +61,7 @@ And in your Ruby program, require the following:
 
 ```ruby
 require 'cryptor'
-require 'cryptor/ciphers/xsalsa20poly1305'
+require 'cryptor/symmetric_encryption/ciphers/xsalsa20poly1305'
 ```
 
 ### Rails (ActiveSupport::MessageEncryptor)
@@ -79,7 +79,7 @@ from a Rails 4.0+ app or other app with ActiveSupport 4.0+ bundled:
 
 ```ruby
 require 'cryptor'
-require 'cryptor/ciphers/message_encryptor'
+require 'cryptor/symmetric_encryption/ciphers/message_encryptor'
 ```
 
 ### Authenticated Symmetric Encryption

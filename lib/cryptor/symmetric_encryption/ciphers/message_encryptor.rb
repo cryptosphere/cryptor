@@ -1,7 +1,7 @@
 require 'active_support/message_encryptor'
 require 'active_support/message_verifier'
 
-require 'cryptor/cipher'
+require 'cryptor/symmetric_encryption/cipher'
 
 module Cryptor
   module Ciphers

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 # "Default" cipher used in non-backend specific tests
-require 'cryptor/ciphers/xsalsa20poly1305'
+require 'cryptor/symmetric_encryption/ciphers/xsalsa20poly1305'
 
 describe Cryptor::SymmetricEncryption do
   let(:plaintext) { 'THE MAGIC WORDS ARE SQUEAMISH OSSIFRAGE' }
@@ -16,7 +16,7 @@ describe Cryptor::SymmetricEncryption do
   subject { described_class.new(secret_key) }
 
   context 'xsalsa20poly1305' do
-    require 'cryptor/ciphers/xsalsa20poly1305'
+    require 'cryptor/symmetric_encryption/ciphers/xsalsa20poly1305'
 
     let(:secret_key) { described_class.random_key(:xsalsa20poly1305) }
 
@@ -41,7 +41,7 @@ describe Cryptor::SymmetricEncryption do
   end
 
   context 'message_encryptor' do
-    require 'cryptor/ciphers/message_encryptor'
+    require 'cryptor/symmetric_encryption/ciphers/message_encryptor'
 
     let(:secret_key) { described_class.random_key(:message_encryptor) }
 

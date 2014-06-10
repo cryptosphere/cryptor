@@ -1,6 +1,6 @@
 require 'rbnacl/libsodium'
 
-require 'cryptor/cipher'
+require 'cryptor/symmetric_encryption/cipher'
 
 module Cryptor
   module Ciphers

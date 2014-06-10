@@ -1,3 +1,5 @@
+require 'cryptor/symmetric_encryption/secret_key'
+
 module Cryptor
   class SymmetricEncryption
     # Stores multiple keys for the purposes of key rotation

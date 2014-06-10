@@ -1,8 +1,9 @@
 require 'ordo'
 
 require 'cryptor/version'
-require 'cryptor/cipher'
+require 'cryptor/symmetric_encryption/cipher'
 require 'cryptor/symmetric_encryption/keyring'
+require 'cryptor/symmetric_encryption/secret_key'
 
 module Cryptor
   # Easy-to-use authenticated symmetric encryption
