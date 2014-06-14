@@ -23,11 +23,15 @@ Cryptor uses the experimental [ORDO v0 message format][ordo] for serializing
 encrypted messages. Future versions may support additional message formats
 like OpenPGP or JWE.
 
+Need help with Cryptor? Join the [RbNaCl Google Group][group].
+We're also on IRC at #cryptosphere on irc.freenode.net
+
 [authenticated encryption]: https://en.wikipedia.org/wiki/Authenticated_encryption
 [RbNaCl::SimpleBox]: https://github.com/cryptosphere/rbnacl/wiki/SimpleBox
 [libsodium]: https://github.com/jedisct1/libsodium/
 [ActiveSupport::MessageEncryptor]: http://api.rubyonrails.org/classes/ActiveSupport/MessageEncryptor.html
 [ordo]: https://github.com/cryptosphere/ordo/wiki/Message-Format
+[group]: http://groups.google.com/group/rbnacl
 
 ## Installation
 
