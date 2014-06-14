@@ -1,14 +1,14 @@
 require 'spec_helper'
 
-describe Cryptor::SecretKey do
+describe Cryptor::SymmetricEncryption::SecretKey do
   let(:algorithm)  { :BassOmatic }
   let(:key_bytes)  { 42 }
-  let(:cipher)     { Cryptor::Cipher.new(algorithm, key_bytes: key_bytes) }
+  let(:cipher)     { Cryptor::SymmetricEncryption::Cipher.new(algorithm, key_bytes: key_bytes) }
   let(:secret_key) { "\xBA\x55" }
   let(:secret_uri) { "secret.key:///#{algorithm};#{Cryptor::Encoding.encode(secret_key)}" }
 
   before do
-    allow(Cryptor::Cipher).to receive(:[]).and_return(cipher)
+    allow(Cryptor::SymmetricEncryption::Cipher).to receive(:[]).and_return(cipher)
   end
 
   subject { described_class.new(secret_uri) }
