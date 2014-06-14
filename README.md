@@ -20,7 +20,8 @@ Cryptor supports two backends:
   encryption scheme provided by Rails, based on AES-CBC and HMAC.
 
 Cryptor uses the experimental [ORDO v0 message format][ordo] for serializing
-encrypted messages.
+encrypted messages. Future versions may support additional message formats
+like OpenPGP or JWE.
 
 [authenticated encryption]: https://en.wikipedia.org/wiki/Authenticated_encryption
 [RbNaCl::SimpleBox]: https://github.com/cryptosphere/rbnacl/wiki/SimpleBox
@@ -137,6 +138,39 @@ decrypted = cryptor.decrypt(ciphertext)
 
 [RFC 6920]: http://tools.ietf.org/html/rfc6920
 [ORDO secret URI]: https://github.com/cryptosphere/ordo/wiki/URI-Registry
+
+## Key Rotation
+
+Cryptor is designed to support key rotation, allowing new ciphertexts to be
+produced under an "active" key, but with old keys configured so older
+ciphertexts can still be decrypted (and also rotated to the new key).
+
+To rotate keys, first make a new key, but configure Cryptor with the old key
+too using the "keyring" option:
+
+```ruby
+old_key = ...
+new_key = Cryptor::SymmetricEncryption.random_key(:xsalsa20poly1305)
+cryptor = Cryptor::SymmetricEncryption.new(new_key, keyring: [old_key])
+```
+
+Cryptor can support arbitrarily many old keys on its keyring. Any messages
+which have been encrypted under the old keys can still be decrypted, but
+newly encrypted messages will always use the new "active" key.
+
+To rotate messages from one key to another, use the `#rotate` method:
+
+```ruby
+old_message = ...
+new_message = cryptor.rotate(old_message)
+```
+
+This is useful if a key is ever compromised, and also good security hygene
+in general.
+
+Cryptor also supports the `#rotate!` method, which works just like `#rotate`,
+but raises `Cryptor::AlreadyRotatedError` if asked to rotate a message that's
+already up-to-date.
 
 ## Contributing
 

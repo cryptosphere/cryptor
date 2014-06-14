@@ -13,12 +13,12 @@ module Cryptor
     end
 
     def initialize(active_key, options = {})
-      @active_key = active_key
+      @active_key = active_key.is_a?(SecretKey) ? active_key : SecretKey.new(active_key)
       @keyring    = nil
 
       options.each do |name, value|
         if name == :keyring
-          @keyring = Keyring.new(active_key, *value)
+          @keyring = Keyring.new(@active_key, *value)
         else fail ArgumentError, "unknown option: #{name}"
         end
       end
@@ -40,17 +40,35 @@ module Cryptor
     end
 
     def decrypt(ciphertext)
-      begin
-        message = ORDO::Message.parse(ciphertext)
-      rescue ORDO::ParseError => ex
-        raise InvalidMessageError, ex.to_s
-      end
-
+      message = parse(ciphertext)
       fingerprint = message['Key-Fingerprint']
       fail InvalidMessageError, 'no key fingerprint in message' unless fingerprint
 
       key = @keyring[fingerprint]
       key.decrypt message.body
+    end
+
+    def rotate!(ciphertext)
+      message = parse(ciphertext)
+      fingerprint = message['Key-Fingerprint']
+      fail AlreadyRotatedError, 'already current' if fingerprint == @active_key.fingerprint
+
+      key = @keyring[fingerprint]
+      encrypt(key.decrypt(message.body))
+    end
+
+    def rotate(ciphertext)
+      rotate!(ciphertext)
+    rescue AlreadyRotatedError
+      ciphertext
+    end
+
+    private
+
+    def parse(message)
+      ORDO::Message.parse(message)
+    rescue ORDO::ParseError => ex
+      raise InvalidMessageError, ex.to_s
     end
   end
 end

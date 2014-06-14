@@ -77,5 +77,23 @@ describe Cryptor::SymmetricEncryption do
       new_cryptor = described_class.new(new_key, keyring: [new_key, old_key])
       expect(new_cryptor.decrypt(message)).to eq plaintext
     end
+
+    it 'rotates messages encrypted under old keys to the active key' do
+      old_cryptor = described_class.new(old_key, keyring: [old_key, another_key])
+      old_message = old_cryptor.encrypt(plaintext)
+
+      hybrid_cryptor = described_class.new(new_key, keyring: [new_key, old_key])
+      new_message = hybrid_cryptor.rotate(old_message)
+
+      new_cryptor = described_class.new(new_key)
+      expect(new_cryptor.decrypt(new_message)).to eq plaintext
+    end
+
+    it 'raises AlreadyRotatedError on up-to-date messages if called with a bang' do
+      cryptor = described_class.new(new_key)
+      message = cryptor.encrypt(plaintext)
+
+      expect { cryptor.rotate!(message) }.to raise_exception(Cryptor::AlreadyRotatedError)
+    end
   end
 end

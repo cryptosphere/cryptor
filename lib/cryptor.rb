@@ -10,4 +10,5 @@ module Cryptor
   InvalidMessageError   = Class.new(CryptoError)
   CorruptedMessageError = Class.new(CryptoError)
   KeyNotFoundError      = Class.new(CryptoError)
+  AlreadyRotatedError   = Class.new(CryptoError)
 end
