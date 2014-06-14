@@ -49,7 +49,7 @@ To begin with, you must select a backend:
 
 ### RbNaCl (recommended)
 
-RbNaCl is a Ruby FFI binding to libsodium, a portable state-of-the-art
+[RbNaCl] is a Ruby FFI binding to libsodium, a portable state-of-the-art
 cryptography library.
 
 To use Cryptor with RbNaCl, add the following to your Gemfile:
@@ -64,6 +64,7 @@ And in your Ruby program, require the following:
 require 'cryptor'
 require 'cryptor/symmetric_encryption/ciphers/xsalsa20poly1305'
 ```
+[RbNaCl]: https://github.com/cryptosphere/rbnacl/
 
 ### Rails (ActiveSupport::MessageEncryptor)
 
