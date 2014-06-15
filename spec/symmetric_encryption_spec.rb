@@ -3,7 +3,7 @@ require 'spec_helper'
 # "Default" cipher used in non-backend specific tests
 require 'cryptor/symmetric_encryption/ciphers/xsalsa20poly1305'
 
-describe Cryptor::SymmetricEncryption do
+RSpec.describe Cryptor::SymmetricEncryption do
   let(:plaintext) { 'THE MAGIC WORDS ARE SQUEAMISH OSSIFRAGE' }
 
   let(:garbage) do

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Cryptor::SymmetricEncryption::SecretKey do
+RSpec.describe Cryptor::SymmetricEncryption::SecretKey do
   let(:algorithm)  { :BassOmatic }
   let(:key_bytes)  { 42 }
   let(:cipher)     { Cryptor::SymmetricEncryption::Cipher.new(algorithm, key_bytes: key_bytes) }
