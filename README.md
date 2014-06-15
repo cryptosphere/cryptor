@@ -9,8 +9,8 @@ Cryptor
 A safe Ruby encryption library, designed to support features like multiple
 active encryption keys and key rotation.
 
-Cryptor uses [authenticated encryption] *exclusively*, ensuring your data
-remains untamered with, even when it's in the hands of an attacker.
+Cryptor utilizes [authenticated encryption], which ensures the confidentiality,
+integrity, and authenticity of data while still providing a simple API.
 
 Cryptor supports two backends:
 
