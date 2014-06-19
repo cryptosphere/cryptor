@@ -1,6 +1,7 @@
 require 'cryptor/version'
 
 require 'cryptor/encoding'
+require 'cryptor/encrypted_attribute'
 require 'cryptor/symmetric_encryption'
 
 # Multi-backend high-level encryption library
