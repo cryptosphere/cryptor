@@ -1,3 +1,7 @@
+1.1.0 (2014-06-18)
+------------------
+* Add Cryptor::EncryptedAttribute module
+
 1.0.0 (2014-06-14)
 ------------------
 * Key rotation support
