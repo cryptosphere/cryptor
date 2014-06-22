@@ -1,5 +1,7 @@
+require 'uri'
 require 'base64'
 require 'digest/sha2'
+require 'securerandom'
 
 module Cryptor
   class SymmetricEncryption
@@ -21,7 +23,7 @@ module Cryptor
         else fail ArgumentError, "invalid cipher: #{cipher}"
         end
 
-        bytes  = RbNaCl::Random.random_bytes(cipher.key_bytes)
+        bytes  = SecureRandom.random_bytes(cipher.key_bytes)
         base64 = Cryptor::Encoding.encode(bytes)
 
         new "secret.key:///#{cipher.algorithm};#{base64}"
