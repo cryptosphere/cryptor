@@ -1,3 +1,7 @@
+1.1.1 (2014-06-23)
+------------------
+* Use SecureRandom instead of RbNaCl::Random with MessageEncryptor backend
+
 1.1.0 (2014-06-18)
 ------------------
 * Add Cryptor::EncryptedAttribute module
