@@ -6,11 +6,10 @@ Cryptor
 [![Code Climate](https://codeclimate.com/github/cryptosphere/cryptor.png)](https://codeclimate.com/github/cryptosphere/cryptor)
 [![Coverage Status](https://coveralls.io/repos/cryptosphere/cryptor/badge.png?branch=master)](https://coveralls.io/r/cryptosphere/cryptor?branch=master)
 
-A safe Ruby encryption library, designed to support features like multiple
-active encryption keys and key rotation.
-
-Cryptor utilizes [authenticated encryption], which ensures the confidentiality,
-integrity, and authenticity of data while still providing a simple API.
+A safe Ruby encryption library designed to support multiple backends and 
+key rotation. Cryptor uses [authenticated encryption] exclusively, which
+ensures the confidentiality, integrity, and authenticity of data while still
+providing a simple API.
 
 Cryptor supports two backends:
 
