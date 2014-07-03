@@ -39,7 +39,7 @@ Library                | Authenticated Encryption | Key Rotation   | Pluggable  
 [Cryptor]              | :green_heart:            | :green_heart:  | :green_heart:  | :green_heart:  | :green_heart:
 [ActiveSupport]        | :yellow_heart:           | :broken_heart: | :broken_heart: | :green_heart:  | :broken_heart:
 [attr_encrypted]       | :broken_heart:           | :broken_heart: | :green_heart:  | :green_heart:  | :broken_heart:
-[AEAD]                 | :green_heart:            | :broken_heart: | :broken_heart: | :broken_heart: | :broken_heart
+[AEAD]                 | :green_heart:            | :broken_heart: | :broken_heart: | :broken_heart: | :broken_heart:
 [symmetric-encryption] | :broken_heart:           | :broken_heart: | :broken_heart: | :green_heart:  | :broken_heart:
 [Gibberish]            | :broken_heart:           | :broken_heart: | :broken_heart: | :green_heart:  | :broken_heart:
 
