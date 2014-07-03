@@ -39,13 +39,14 @@ Library                | Authenticated Encryption | Key Rotation   | Pluggable  
 [Cryptor]              | :green_heart:            | :green_heart:  | :green_heart:  | :green_heart:  | :green_heart:
 [ActiveSupport]        | :yellow_heart:           | :broken_heart: | :broken_heart: | :green_heart:  | :broken_heart:
 [attr_encrypted]       | :broken_heart:           | :broken_heart: | :green_heart:  | :green_heart:  | :broken_heart:
-[aead]                 | :green_heart:            | :broken_heart: | :broken_heart: | :broken_heart: | :broken_heart:
+[AEAD]                 | :green_heart:            | :broken_heart: | :broken_heart: | :broken_heart: | :broken_heart
 [symmetric-encryption] | :broken_heart:           | :broken_heart: | :broken_heart: | :green_heart:  | :broken_heart:
 [Gibberish]            | :broken_heart:           | :broken_heart: | :broken_heart: | :green_heart:  | :broken_heart:
 
 [Cryptor]: https://github.com/cryptosphere/cryptor
 [ActiveSupport]: http://api.rubyonrails.org/classes/ActiveSupport/MessageEncryptor.html
 [attr_encrypted]: https://github.com/attr-encrypted/attr_encrypted
+[AEAD]: https://github.com/onelogin/aead
 [symmetric-encryption]: https://github.com/reidmorrison/symmetric-encryption
 [Gibberish]: https://github.com/mdp/gibberish
 
