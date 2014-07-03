@@ -34,13 +34,14 @@ We're also on IRC at #cryptosphere on irc.freenode.net
 
 ## Ruby cryptography library comparison
 
-Library                | Authenticated Encryption | Key Rotation   | Pluggable      | JRuby Support | Has a Dinosaur
------------------------|--------------------------|----------------|----------------|---------------|---------------
-[Cryptor]              | :green_heart:            | :green_heart:  | :green_heart:  | :green_heart: | :green_heart:
-[ActiveSupport]        | :yellow_heart:           | :broken_heart: | :broken_heart: | :green_heart: | :broken_heart:
-[attr_encrypted]       | :broken_heart:           | :broken_heart: | :green_heart:  | :green_heart: | :broken_heart:
-[symmetric-encryption] | :broken_heart:           | :broken_heart: | :broken_heart: | :green_heart: | :broken_heart:
-[Gibberish]            | :broken_heart:           | :broken_heart: | :broken_heart: | :green_heart: | :broken_heart:
+Library                | Authenticated Encryption | Key Rotation   | Pluggable      | JRuby Support  | Has a Dinosaur
+-----------------------|--------------------------|----------------|----------------|----------------|---------------
+[Cryptor]              | :green_heart:            | :green_heart:  | :green_heart:  | :green_heart:  | :green_heart:
+[ActiveSupport]        | :yellow_heart:           | :broken_heart: | :broken_heart: | :green_heart:  | :broken_heart:
+[attr_encrypted]       | :broken_heart:           | :broken_heart: | :green_heart:  | :green_heart:  | :broken_heart:
+[aead]                 | :green_heart:            | :broken_heart: | :broken_heart: | :broken_heart: | :broken_heart:
+[symmetric-encryption] | :broken_heart:           | :broken_heart: | :broken_heart: | :green_heart:  | :broken_heart:
+[Gibberish]            | :broken_heart:           | :broken_heart: | :broken_heart: | :green_heart:  | :broken_heart:
 
 [Cryptor]: https://github.com/cryptosphere/cryptor
 [ActiveSupport]: http://api.rubyonrails.org/classes/ActiveSupport/MessageEncryptor.html
