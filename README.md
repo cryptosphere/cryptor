@@ -32,6 +32,22 @@ We're also on IRC at #cryptosphere on irc.freenode.net
 [ordo]: https://github.com/cryptosphere/ordo/wiki/Message-Format
 [group]: http://groups.google.com/group/rbnacl
 
+## Comparison with other Ruby cryptography libraries
+
+Library                | Authenticated Encryption | Key Rotation   | Pluggable      | JRuby Support | Has a Dinosaur
+-----------------------|--------------------------|----------------|----------------|---------------|---------------
+[Cryptor]              | :green_heart:            | :green_heart:  | :green_heart:  | :green_heart: | :green_heart:
+[ActiveSupport]        | :yellow_heart:           | :broken_heart: | :broken_heart: | :green_heart: | :broken_heart:
+[attr_encrypted]       | :broken_heart:           | :broken_heart: | :green_heart:  | :green_heart: | :broken_heart:
+[symmetric-encryption] | :broken_heart:           | :broken_heart: | :broken_heart: | :green_heart: | :broken_heart:
+[Gibberish]            | :broken_heart:           | :broken_heart: | :broken_heart: | :green_heart: | :broken_heart:
+
+[Cryptor]: https://github.com/cryptosphere/cryptor
+[ActiveSupport]: http://api.rubyonrails.org/classes/ActiveSupport/MessageEncryptor.html
+[attr_encrypted]: https://github.com/attr-encrypted/attr_encrypted
+[symmetric-encryption]: https://github.com/reidmorrison/symmetric-encryption
+[Gibberish]: https://github.com/mdp/gibberish
+
 ## Installation
 
 Add this line to your application's Gemfile:
