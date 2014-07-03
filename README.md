@@ -32,7 +32,7 @@ We're also on IRC at #cryptosphere on irc.freenode.net
 [ordo]: https://github.com/cryptosphere/ordo/wiki/Message-Format
 [group]: http://groups.google.com/group/rbnacl
 
-## Comparison with other Ruby cryptography libraries
+## Ruby cryptography library comparison
 
 Library                | Authenticated Encryption | Key Rotation   | Pluggable      | JRuby Support | Has a Dinosaur
 -----------------------|--------------------------|----------------|----------------|---------------|---------------
