@@ -19,5 +19,10 @@ RSpec.describe Cryptor::SymmetricEncryption::Support::MessageEncryptor do
     expect(first_message).not_to eq second_message
   end
 
-  pending 'fails if the ciphertext has been tampered with'
+  it 'raises if ciphertext has been tampered with' do
+    ciphertext, iv = encryptor.encrypt_and_sign(message).split('--')
+    expect { encryptor.decrypt_and_verify("#{ciphertext.reverse}--#{iv}") }.to raise_exception
+    expect { encryptor.decrypt_and_verify("#{ciphertext}--#{iv.reverse}") }.to raise_exception
+    expect { encryptor.decrypt_and_verify('purejunk') }.to raise_exception
+  end
 end
