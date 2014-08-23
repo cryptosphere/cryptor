@@ -40,10 +40,10 @@ RSpec.describe Cryptor::SymmetricEncryption do
     end
   end
 
-  context 'aes256cbchmacsha256' do
-    require 'cryptor/symmetric_encryption/ciphers/aes256cbchmacsha256'
+  context 'aes128cbchmacsha256128' do
+    require 'cryptor/symmetric_encryption/ciphers/aes128cbchmacsha256128'
 
-    let(:secret_key) { described_class.random_key(:aes256cbchmacsha256) }
+    let(:secret_key) { described_class.random_key(:aes128cbchmacsha256128) }
 
     it 'encrypts and decrypts' do
       ciphertext = subject.encrypt(plaintext)
