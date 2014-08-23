@@ -50,7 +50,7 @@ module Cryptor
           verifier.generate(_encrypt(value))
         end
 
-        def decrypt_and_verify(value)
+        def verify_and_decrypt(value)
           _decrypt(verifier.verify(value))
         end
 

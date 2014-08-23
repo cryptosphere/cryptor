@@ -22,7 +22,7 @@ module Cryptor
         end
 
         def decrypt(key, ciphertext)
-          encryptor(key).decrypt_and_verify(ciphertext)
+          encryptor(key).verify_and_decrypt(ciphertext)
         rescue Support::MessageVerifier::InvalidSignature => ex
           raise CorruptedMessageError, ex.to_s
         end

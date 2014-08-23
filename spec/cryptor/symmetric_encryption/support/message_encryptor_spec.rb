@@ -10,7 +10,7 @@ RSpec.describe Cryptor::SymmetricEncryption::Support::MessageEncryptor do
 
   it 'encrypts and decrypts data' do
     ciphertext = encryptor.encrypt_and_sign(message)
-    expect(encryptor.decrypt_and_verify(ciphertext)).to eq message
+    expect(encryptor.verify_and_decrypt(ciphertext)).to eq message
   end
 
   it 'produces different ciphertexts when called repeatedly' do
@@ -21,8 +21,8 @@ RSpec.describe Cryptor::SymmetricEncryption::Support::MessageEncryptor do
 
   it 'raises if ciphertext has been tampered with' do
     ciphertext, iv = encryptor.encrypt_and_sign(message).split('--')
-    expect { encryptor.decrypt_and_verify("#{ciphertext.reverse}--#{iv}") }.to raise_exception
-    expect { encryptor.decrypt_and_verify("#{ciphertext}--#{iv.reverse}") }.to raise_exception
-    expect { encryptor.decrypt_and_verify('purejunk') }.to raise_exception
+    expect { encryptor.verify_and_decrypt("#{ciphertext.reverse}--#{iv}") }.to raise_exception
+    expect { encryptor.verify_and_decrypt("#{ciphertext}--#{iv.reverse}") }.to raise_exception
+    expect { encryptor.verify_and_decrypt('purejunk') }.to raise_exception
   end
 end
