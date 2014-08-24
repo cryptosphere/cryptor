@@ -19,7 +19,7 @@ module Cryptor
     # @return [String] decoded string
     def decode(string)
       padding_size  = string.bytesize % 4
-      padded_string =  padding_size > 0 ? string + '=' * (4 - padding_size) : string
+      padded_string = padding_size > 0 ? string + '=' * (4 - padding_size) : string
 
       Base64.urlsafe_decode64(padded_string)
     end
